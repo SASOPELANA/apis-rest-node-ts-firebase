@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "name": "Laptop Gamer",
+    "price": 1000,
+    "categories": "computadoras",
+    "image": "https://cdn.mos.cms.futurecdn.net/tEtNuVTELX2NBGtz4uTSSZ-970-80.jpg.webp"
+  },
+  {
+    "id": 2,
+    "name": "Celular Gamer",
+    "price": 300,
+    "categories": "celular",
+    "image": "https://files.tecnoblog.net/wp-content/uploads/2025/08/amanz-ifoqexzizfg-unsplash.jpg"
+  },
+  {
+    "id": 3,
+    "name": "RTX 5060 TI 16GB",
+    "price": 460,
+    "categories": "gpu",
+    "image": "https://imgs.search.brave.com/7DjpUOSzNrZXhQcPZ8LAFwKGgmkO3ga4nR3ROc2j-kc/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NzFmMnpnU2Z4VEwu/anBn"
+  },
+  {
+    "id": 4,
+    "name": "Remera Deportiva",
+    "price": 20,
+    "categories": "deporte",
+    "image": "https://imgs.search.brave.com/GxMam_DrPh5sZRRwGVYzbg0t_LEXnKzh30epYIWwhTI/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9odHRw/Mi5tbHN0YXRpYy5j/b20vRF9OUV9OUF84/ODYyNTctTUxBODQy/ODc3ODQzODlfMDUy/MDI1LU8ud2VicA"
+  }
+]
