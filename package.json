@@ -2,7 +2,7 @@
   "name": "apis-rest-node-firebase",
   "version": "1.0.0",
   "description": "Apis rest node Firebase",
-  "main": "index.js",
+  "main": "dist/index.js",
   "type": "module",
   "scripts": {
     "build": "tsc",
