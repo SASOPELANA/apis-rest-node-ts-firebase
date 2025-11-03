@@ -286,3 +286,16 @@ Las siguientes rutas requieren un token JWT en la cabecera `Authorization` como 
 - **Parámetros:**
   - `id` (path, requerido): ID del producto a eliminar
 - **Respuesta:** 204 No Content
+
+#### Deploy en Render
+
+1. Crea una cuenta en [Render](https://render.com/) si no tienes una.
+2. Crea un nuevo "Web Service" y conecta tu repositorio de GitHub.
+3. Configura las variables de entorno necesarias (por ejemplo, las credenciales de Firebase).
+4. Render se encargará del resto, construyendo y desplegando tu API automáticamente.
+
+- **sitio de prueba:** [https://apis-rest-node-ts-firebase.onrender.com](https://apis-rest-node-ts-firebase.onrender.com)
+
+### Licencia
+
+Este proyecto está bajo la Licencia MIT. Consulta el archivo LICENSE para más detalles.
