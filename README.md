@@ -71,7 +71,7 @@ Para acceder a las rutas protegidas, primero debes registrar un usuario y luego 
 
 #### Registrar un usuario
 
-- **POST** `/api/register`
+- **POST** `/api/auth/register`
 - **Descripción:** Registra un nuevo usuario.
 - **Body (JSON):**
 
@@ -93,7 +93,7 @@ Para acceder a las rutas protegidas, primero debes registrar un usuario y luego 
 
 #### Iniciar sesión
 
-- **POST** `/api/login`
+- **POST** `/api/auth/login`
 - **Descripción:** Inicia sesión y devuelve un token JWT.
 - **Body (JSON):**
 
