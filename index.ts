@@ -1,9 +1,6 @@
 import dotenv from "dotenv";
 dotenv.config();
 
-import fs from "fs";
-import path from "path";
-
 import express from "express";
 import morgan from "morgan";
 import cors from "cors";
@@ -18,12 +15,8 @@ import middlewares from "./src/middlewares/not-found.js";
 // auth router import
 import authRouter from "./src/routes/auth.router.js";
 
-// swagger import
-import swaggerUI from "swagger-ui-express";
-
-const swaggerDoc = JSON.parse(
-  fs.readFileSync(path.resolve("./src/swagger-output.json"), "utf-8"),
-);
+// swagger router import -> solo en desarrollo
+import swaggerRouter from "./src/routes/swagger.router.js";
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -32,14 +25,8 @@ app.use(morgan("dev"));
 app.use(cors());
 app.use(express.json());
 
-// // swagger --> solo en desarrollo
-if (process.env.NODE_ENV === "development") {
-  app.use("/doc", swaggerUI.serve, swaggerUI.setup(swaggerDoc));
-} else {
-  app.use("/doc", (_req, res) => {
-    res.status(404).send("<h1>404 not found :( </h1>");
-  });
-}
+// swagger --> solo en desarrollo
+app.use(swaggerRouter);
 
 app.use("/api/auth", authRouter);
 
