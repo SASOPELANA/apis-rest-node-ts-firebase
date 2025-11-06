@@ -1,6 +1,8 @@
 import dotenv from "dotenv";
 dotenv.config();
 
+import { Request, Response } from "express";
+
 import fs from "fs";
 import path from "path";
 
@@ -22,8 +24,8 @@ const swaggerDoc = JSON.parse(
 if (process.env.NODE_ENV === "development") {
   router.use("/doc", swaggerUI.serve, swaggerUI.setup(swaggerDoc));
 } else {
-  router.use("/doc", (_req, res) => {
-    res.status(404).json("404 not found :( ");
+  router.use("/doc", (_req: Request, res: Response) => {
+    res.status(404).json({ message: "404 not found :( " });
   });
 }
 
