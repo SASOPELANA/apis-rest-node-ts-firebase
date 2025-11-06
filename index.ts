@@ -32,6 +32,7 @@ app.use(morgan("dev"));
 app.use(cors());
 app.use(express.json());
 
+// swagger --> solo en desarrollo
 app.use("/doc", swaggerUI.serve, swaggerUI.setup(swaggerDoc));
 
 app.use("/api/auth", authRouter);

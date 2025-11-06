@@ -2,7 +2,7 @@
 import { Request, Response, NextFunction } from "express";
 
 const notFount = (_req: Request, res: Response, _next: NextFunction) => {
-  res.status(404).json({ error: "Not found" });
+  res.status(404).json({ error: "Not found. :( " });
 };
 
 const mantenimiento = (_req: Request, res: Response, _next: NextFunction) => {
