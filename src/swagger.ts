@@ -11,9 +11,9 @@ const doc = {
       "Apis Rest Node Firebase para una tienda de productos, gestiona tus productos y categorías.",
   },
   // con localhost
-  //host: "localhost:3000",
+  host: "localhost:3000",
   // en caso de que tengas un dominio
-  host: "https://apis-rest-node-ts-firebase.vercel.app",
+  //host: "https://apis-rest-node-ts-firebase.vercel.app",
   schemes: ["http", "https"],
 };
 
