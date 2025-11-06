@@ -294,7 +294,7 @@ Las siguientes rutas requieren un token JWT en la cabecera `Authorization` como 
 3. Configura las variables de entorno necesarias (por ejemplo, las credenciales de Firebase).
 4. Render se encargará del resto, construyendo y desplegando tu API automáticamente.
 
-- **sitio de prueba:** [https://apis-rest-node-ts-firebase.onrender.com](https://apis-rest-node-ts-firebase.onrender.com)
+- **sitio de prueba:** [https://apis-rest-node-ts-firebase.onrender.com](https://apis-rest-node-ts-firebase.vercel.app)
 
 ### Licencia
 
