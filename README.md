@@ -45,6 +45,12 @@ Las variables de entorno son las siguientes:
 - `FIREBASE_MEASUREMENT_ID`: Tu ID de medición de Firebase.
 - `JWT_SECRET`: Una cadena secreta para firmar los tokens JWT.
 
+### Atención
+
+La variable `NODE_ENV` se puede establecer en `development` no se usa en producción. Esto es para usar swagger solo en desarrollo, no en producción.
+
+- `NODE_ENV`: Establece el entorno de ejecución (`development`).
+
 ## Uso
 
 ### Ejecutar en modo desarrollo
@@ -287,14 +293,24 @@ Las siguientes rutas requieren un token JWT en la cabecera `Authorization` como 
   - `id` (path, requerido): ID del producto a eliminar
 - **Respuesta:** 204 No Content
 
-#### Deploy en Render
+#### Deploy en Vercel
 
-1. Crea una cuenta en [Render](https://render.com/) si no tienes una.
+1. Crea una cuenta en [Vercel](https://vercel.com/) si no tienes una.
 2. Crea un nuevo "Web Service" y conecta tu repositorio de GitHub.
 3. Configura las variables de entorno necesarias (por ejemplo, las credenciales de Firebase).
-4. Render se encargará del resto, construyendo y desplegando tu API automáticamente.
+4. Vercel se encargará del resto, construyendo y desplegando tu API automáticamente.
 
 - **sitio de prueba:** [https://apis-rest-node-ts-firebase.vercel.app](https://apis-rest-node-ts-firebase.vercel.app)
+
+## Swagger UI solo en desarrollo
+
+### Para entornos de desarrollo. Tener una documentación interactiva de la API es muy útil para probar y entender los endpoints disponibles
+
+Si estás ejecutando la aplicación en modo desarrollo (`NODE_ENV=development`), puedes acceder a la documentación interactiva de la API a través de Swagger UI.
+
+- **URL de Swagger UI:** `http://localhost:PORT/doc`
+- **Documentación interactiva (/doc)**
+La ruta /doc sirve la interfaz Swagger UI para explorar la API de forma interactiva cuando la aplicación está en modo desarrollo. Esto está controlado por la variable de entorno NODE_ENV: si NODE_ENV=development podrás acceder a la documentación en `http://localhost:PORT/doc` En entornos de producción la ruta no está disponible y responderá con un 404 (no muestra la documentación en producción y responde con un 404 not found).
 
 ### Licencia
 
