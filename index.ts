@@ -15,12 +15,18 @@ import middlewares from "./src/middlewares/not-found.js";
 // auth router import
 import authRouter from "./src/routes/auth.router.js";
 
+// swagger import
+import swaggerUI from "swagger-ui-express";
+import swaggerDoc from "./src/swagger-output.json";
+
 const app = express();
 const PORT = process.env.PORT || 3001;
 
 app.use(morgan("dev"));
 app.use(cors());
 app.use(express.json());
+
+app.use("/doc", swaggerUI.serve, swaggerUI.setup(swaggerDoc));
 
 app.use("/api/auth", authRouter);
 
