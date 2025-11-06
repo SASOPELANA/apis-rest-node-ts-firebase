@@ -5,7 +5,7 @@
     "description": "Apis Rest Node Firebase para una tienda de productos, gestiona tus productos y categorías.",
     "version": "1.0.0"
   },
-  "host": "localhost:3000",
+  "host": "https://apis-rest-node-ts-firebase.vercel.app",
   "basePath": "/",
   "schemes": [
     "http",
