@@ -1,6 +1,9 @@
 import dotenv from "dotenv";
 dotenv.config();
 
+import fs from "fs";
+import path from "path";
+
 import express from "express";
 import morgan from "morgan";
 import cors from "cors";
@@ -17,7 +20,10 @@ import authRouter from "./src/routes/auth.router.js";
 
 // swagger import
 import swaggerUI from "swagger-ui-express";
-import swaggerDoc from "./src/swagger-output.json";
+
+const swaggerDoc = JSON.parse(
+  fs.readFileSync(path.resolve("./src/swagger-output.json"), "utf-8"),
+);
 
 const app = express();
 const PORT = process.env.PORT || 3001;
