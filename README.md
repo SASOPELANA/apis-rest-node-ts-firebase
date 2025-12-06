@@ -293,7 +293,7 @@ Las siguientes rutas requieren un token JWT en la cabecera `Authorization` como 
   - `id` (path, requerido): ID del producto a eliminar
 - **Respuesta:** 204 No Content
 
-### Submódulo de Productos de Usuario (Rutas Protegidas)
+## Submódulo de Productos de Usuario (Rutas Protegidas)
 
 Estas rutas permiten a un usuario autenticado gestionar su propia lista de productos (ej. favoritos, carrito). Todas requieren un token JWT.
 
