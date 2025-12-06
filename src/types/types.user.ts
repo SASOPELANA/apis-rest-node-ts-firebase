@@ -4,6 +4,7 @@ export interface User {
   id: string;
   email: string;
   passwordHash: string;
+  products?: string[]; // --> para la referencia de los productos en los user
 }
 
 export interface UserTokenPayload {

@@ -8,6 +8,9 @@ import cors from "cors";
 // rutas import
 import mainRouter from "./src/routes/main.router.js";
 import productsRouter from "./src/routes/products.router.js";
+// INICIO: CAMBIO - Importar el nuevo router de usuario
+import userRouter from "./src/routes/user.router.js";
+// FIN: CAMBIO
 
 // middlewares import
 import middlewares from "./src/middlewares/not-found.js";
@@ -32,6 +35,9 @@ app.use("/api/auth", authRouter);
 
 app.use(mainRouter);
 app.use("/api", productsRouter);
+
+// ruta de usuario y gestion de id productos
+app.use("/api", userRouter);
 
 // middlewares para error
 app.use(middlewares.notFount);

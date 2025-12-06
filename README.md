@@ -293,6 +293,63 @@ Las siguientes rutas requieren un token JWT en la cabecera `Authorization` como 
   - `id` (path, requerido): ID del producto a eliminar
 - **Respuesta:** 204 No Content
 
+### Submódulo de Productos de Usuario (Rutas Protegidas)
+
+Estas rutas permiten a un usuario autenticado gestionar su propia lista de productos (ej. favoritos, carrito). Todas requieren un token JWT.
+
+#### Añadir un producto a la lista del usuario
+
+- **POST** `/api/user/products`
+- **Descripción:** Agrega un producto existente a la lista personal del usuario.
+- **Body (JSON):**
+
+```json
+{
+  "productId": "el_id_del_producto_a_agregar"
+}
+```
+
+- **Respuesta:**
+
+```json
+{
+  "message": "Producto añadido a la lista del usuario."
+}
+```
+
+#### Obtener la lista de productos del usuario
+
+- **GET** `/api/user/products`
+- **Descripción:** Devuelve la lista completa de productos en la colección personal del usuario.
+- **Respuesta de ejemplo:**
+
+```json
+[
+  {
+    "id": "el_id_del_producto_1",
+    "name": "Producto 1",
+    "price": 100,
+    "categories": ["Categoría A"],
+    "description": "Descripción del producto 1",
+    "image": "url_de_la_imagen_1"
+  }
+]
+```
+
+#### Eliminar un producto de la lista del usuario
+
+- **DELETE** `/api/user/products/:productId`
+- **Descripción:** Elimina un producto de la lista personal del usuario.
+- **Parámetros:**
+  - `id` (path, requerido): ID del producto a eliminar.
+- **Respuesta:**
+
+```json
+{
+  "message": "Producto eliminado de la lista del usuario."
+}
+```
+
 #### Deploy en Vercel
 
 1. Crea una cuenta en [Vercel](https://vercel.com/) si no tienes una.
@@ -310,7 +367,7 @@ Si estás ejecutando la aplicación en modo desarrollo (`NODE_ENV=development`),
 
 - **URL de Swagger UI:** `http://localhost:PORT/doc`
 - **Documentación interactiva (/doc)**
-La ruta /doc sirve la interfaz Swagger UI para explorar la API de forma interactiva cuando la aplicación está en modo desarrollo. Esto está controlado por la variable de entorno NODE_ENV: si NODE_ENV=development podrás acceder a la documentación en `http://localhost:PORT/doc` En entornos de producción la ruta no está disponible y responderá con un 404 (no muestra la documentación en producción y responde con un 404 not found).
+  La ruta /doc sirve la interfaz Swagger UI para explorar la API de forma interactiva cuando la aplicación está en modo desarrollo. Esto está controlado por la variable de entorno NODE_ENV: si NODE_ENV=development podrás acceder a la documentación en `http://localhost:PORT/doc` En entornos de producción la ruta no está disponible y responderá con un 404 (no muestra la documentación en producción y responde con un 404 not found).
 
 ### Licencia
 
