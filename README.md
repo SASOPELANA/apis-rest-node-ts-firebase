@@ -369,6 +369,10 @@ Si estás ejecutando la aplicación en modo desarrollo (`NODE_ENV=development`),
 - **Documentación interactiva (/doc)**
   La ruta /doc sirve la interfaz Swagger UI para explorar la API de forma interactiva cuando la aplicación está en modo desarrollo. Esto está controlado por la variable de entorno NODE_ENV: si NODE_ENV=development podrás acceder a la documentación en `http://localhost:PORT/doc` En entornos de producción la ruta no está disponible y responderá con un 404 (no muestra la documentación en producción y responde con un 404 not found).
 
+- Cada ves que cambies algo en tu API, recarga la documentación interactiva de swagger para ver los cambios reflejados.
+
+-** Comando:** `pnpm swagger`
+
 ### Licencia
 
 Este proyecto está bajo la Licencia MIT. Consulta el archivo LICENSE para más detalles.
