@@ -371,7 +371,7 @@ Si estás ejecutando la aplicación en modo desarrollo (`NODE_ENV=development`),
 
 - Cada ves que cambies algo en tu API, recarga la documentación interactiva de swagger para ver los cambios reflejados.
 
--** Comando:** `pnpm swagger`
+- ** Comando:** `pnpm swagger`
 
 ### Licencia
 
