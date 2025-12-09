@@ -300,7 +300,7 @@ Estas rutas permiten a un usuario autenticado gestionar su propia lista de produ
 #### Añadir un producto a la lista del usuario
 
 - **POST** `/api/user/products`
-- **Descripción:** Agrega un producto existente a la lista personal del usuario.
+- **Descripción:** Agrega un producto existente a la lista personal del usuario. (Ruta protegida)
 - **Body (JSON):**
 
 ```json
@@ -320,7 +320,7 @@ Estas rutas permiten a un usuario autenticado gestionar su propia lista de produ
 #### Obtener la lista de productos del usuario
 
 - **GET** `/api/user/products`
-- **Descripción:** Devuelve la lista completa de productos en la colección personal del usuario.
+- **Descripción:** Devuelve la lista completa de productos en la colección personal del usuario. (Ruta protegida)
 - **Respuesta de ejemplo:**
 
 ```json
@@ -339,7 +339,7 @@ Estas rutas permiten a un usuario autenticado gestionar su propia lista de produ
 #### Eliminar un producto de la lista del usuario
 
 - **DELETE** `/api/user/products/:productId`
-- **Descripción:** Elimina un producto de la lista personal del usuario.
+- **Descripción:** Elimina un producto de la lista personal del usuario. (Ruta protegida)
 - **Parámetros:**
   - `id` (path, requerido): ID del producto a eliminar.
 - **Respuesta:**
