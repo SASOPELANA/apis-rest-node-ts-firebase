@@ -87,7 +87,7 @@ const getProductsByCategory = async (categories: Array<string>) => {
 
     const snapshot = await getDocs(q);
 
-    console.log(snapshot);
+    //console.log(snapshot);
 
     return snapshot.docs.map((doc) => ({
       id: doc.id,
@@ -109,7 +109,7 @@ const getProductsByCategoryLower = async (categories: Array<string>) => {
 
     const snapshot = await getDocs(q);
 
-    console.log(snapshot);
+    //console.log(snapshot);
 
     return snapshot.docs.map((doc) => ({
       id: doc.id,

@@ -4,6 +4,10 @@
 
 Apis Rest para gestión de productos desarrollado con Node.js y Express.
 
+Utiliza Firebase Firestore como base de datos para almacenar la información de los productos y Firebase Authentication para gestionar la autenticación de usuarios mediante JWT (JSON Web Tokens).
+
+Express validator se utiliza para validar las solicitudes entrantes y asegurar que los datos sean correctos antes de procesarlos.
+
 ## Pre requisitos
 
 - Node.js (v18 o superior)
