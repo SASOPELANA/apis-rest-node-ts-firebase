@@ -72,7 +72,7 @@ export const validateUpdatePatchProduct = [
     .optional()
     .isArray({ min: 1 }),
 
-  body("descripción" as ProductKeys)
+  body("description" as ProductKeys)
     .optional()
     .isString()
     .trim()

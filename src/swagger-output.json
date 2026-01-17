@@ -36,12 +36,6 @@
           "201": {
             "description": "Created"
           },
-          "409": {
-            "description": "Conflict"
-          },
-          "422": {
-            "description": "Unprocessable Entity"
-          },
           "503": {
             "description": "Service Unavailable"
           }
@@ -74,9 +68,6 @@
           },
           "401": {
             "description": "Unauthorized"
-          },
-          "422": {
-            "description": "Unprocessable Entity"
           }
         }
       }
@@ -147,14 +138,11 @@
           "201": {
             "description": "Created"
           },
-          "400": {
-            "description": "Bad Request"
-          },
           "401": {
             "description": "Unauthorized"
           },
-          "422": {
-            "description": "Unprocessable Entity"
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
@@ -245,17 +233,14 @@
           "200": {
             "description": "OK"
           },
-          "400": {
-            "description": "Bad Request"
-          },
           "401": {
             "description": "Unauthorized"
           },
           "404": {
             "description": "Not Found"
           },
-          "422": {
-            "description": "Unprocessable Entity"
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       },
@@ -302,17 +287,14 @@
           "200": {
             "description": "OK"
           },
-          "400": {
-            "description": "Bad Request"
-          },
           "401": {
             "description": "Unauthorized"
           },
           "404": {
             "description": "Not Found"
           },
-          "422": {
-            "description": "Unprocessable Entity"
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       },
