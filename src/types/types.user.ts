@@ -4,7 +4,8 @@ export interface User {
   id: string;
   email: string;
   passwordHash: string;
-  products?: string[]; // --> para la referencia de los productos en los user
+  products?: string[]; // -> para la referencia de los productos en los user
+  createdAt?: string; // Timestamp ISO de creación del usuario
 }
 
 export interface UserTokenPayload {

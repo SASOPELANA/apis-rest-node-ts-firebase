@@ -10,4 +10,6 @@ export interface Productos {
   description_lower?: string;
   description?: string;
   image: string;
+  createdAt?: string; // Timestamp ISO de creación
+  updatedAt?: string; // Timestamp ISO de última actualización
 }

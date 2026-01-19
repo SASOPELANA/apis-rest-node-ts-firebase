@@ -12,6 +12,9 @@ import productsRouter from "./src/routes/products.router.js";
 import userRouter from "./src/routes/user.router.js";
 // FIN: CAMBIO
 
+// import admin
+import { ensureAdminExists } from "./src/utils/setup.admin.js";
+
 // middlewares import
 import middlewares from "./src/middlewares/not-found.js";
 
@@ -42,6 +45,7 @@ app.use("/api", userRouter);
 // middlewares para error
 app.use(middlewares.notFount);
 
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
+  await ensureAdminExists();
   console.log(`http://localhost:${PORT}`);
 });

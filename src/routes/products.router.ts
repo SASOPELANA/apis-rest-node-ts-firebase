@@ -10,6 +10,8 @@ import {
   validateProductById,
 } from "../validators/products.validator.js";
 
+import { isAdmin } from "../middlewares/isAdmin.middleware.js";
+
 const router = Router();
 
 // get all products and By categories
@@ -30,6 +32,7 @@ router.get("/products/:id", validateProductById, controller.getId);
 router.post(
   "/products",
   verifyToken,
+  isAdmin,
   validateCreateProduct,
   controller.createProduct,
 );
@@ -38,6 +41,7 @@ router.post(
 router.put(
   "/products/:id",
   verifyToken,
+  isAdmin,
   validateProductById,
   validateCreateProduct,
   controller.updateProduct,
@@ -47,6 +51,7 @@ router.put(
 router.patch(
   "/products/:id",
   verifyToken,
+  isAdmin,
   validateProductById,
   validateUpdatePatchProduct,
   controller.updatePatchProduct,
@@ -56,6 +61,7 @@ router.patch(
 router.delete(
   "/products/:id",
   verifyToken,
+  isAdmin,
   validateProductById,
   controller.deleteProduct,
 );

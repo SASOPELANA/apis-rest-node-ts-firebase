@@ -18,12 +18,19 @@ const usersCollection = collection(db, "users");
 
 export const createUser = async (email: string, passwordHash: string) => {
   try {
+    const createdAt = new Date().toISOString();
     const docRef = await addDoc(usersCollection, {
       email,
       password: passwordHash,
       products: [],
+      createdAt,
     });
-    return { id: docRef.id, email, products: [] };
+    return {
+      id: docRef.id,
+      email,
+      products: [],
+      createdAt,
+    };
   } catch (error) {
     console.error(error);
     throw error;
@@ -46,6 +53,7 @@ export const findUserByEmail = async (email: string): Promise<User | null> => {
         email: data.email,
         passwordHash: data.password,
         products: data.products || [],
+        createdAt: data.createdAt,
       };
     } else {
       return null;
@@ -68,6 +76,7 @@ export const findUserById = async (id: string): Promise<User | null> => {
         email: data.email,
         passwordHash: data.password,
         products: data.products || [],
+        createdAt: data.createdAt,
       };
     } else {
       return null;

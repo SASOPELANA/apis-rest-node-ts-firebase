@@ -78,6 +78,7 @@ const createProduct = async (req: Request, res: Response) => {
       categories,
       categories_lower: categories.map((item) => item.toLowerCase()),
       image,
+      createdAt: new Date().toISOString(), // Timestamp de creación
     });
 
     res.status(201).json(response);
@@ -103,6 +104,7 @@ const updateProduct = async (req: Request, res: Response) => {
       description,
       description_lower: description?.toLowerCase(),
       image,
+      updatedAt: new Date().toISOString(), // Timestamp de actualización
     });
 
     if (!response) {
@@ -146,6 +148,9 @@ const updatePatchProduct = async (req: Request, res: Response) => {
     if (req.body.image !== undefined) {
       data.image = req.body.image;
     }
+
+    // Agregar updatedAt siempre que se actualice
+    data.updatedAt = new Date().toISOString();
 
     const response = await Model.updatePatchProduct(id, data);
 

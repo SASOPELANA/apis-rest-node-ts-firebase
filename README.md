@@ -48,6 +48,22 @@ Las variables de entorno son las siguientes:
 - `FIREBASE_APP_ID`: Tu ID de aplicación de Firebase.
 - `FIREBASE_MEASUREMENT_ID`: Tu ID de medición de Firebase.
 - `JWT_SECRET`: Una cadena secreta para firmar los tokens JWT.
+- `ADMIN_EMAIL`: Email del usuario administrador (se crea automáticamente al iniciar el servidor).
+- `ADMIN_PASSWORD`: Contraseña del usuario administrador (debe cumplir requisitos de seguridad).
+
+### Requisitos de Contraseña
+
+Todas las contraseñas (tanto para usuarios normales como para el administrador) deben cumplir los siguientes requisitos de seguridad:
+
+- ✅ Mínimo 8 caracteres
+- ✅ Al menos 1 letra mayúscula
+- ✅ Al menos 1 letra minúscula
+- ✅ Al menos 1 número
+- ✅ Al menos 1 símbolo especial (ej: `*`, `!`, `@`, `#`, etc.)
+
+**Ejemplo de contraseña válida:** `MiPassword123*`
+
+> **Nota:** El usuario administrador se crea automáticamente al iniciar el servidor por primera vez usando las credenciales definidas en `ADMIN_EMAIL` y `ADMIN_PASSWORD`. Si ya existe un usuario con ese email, el servidor no lo recreará.
 
 ### Atención
 
@@ -122,14 +138,72 @@ Para acceder a las rutas protegidas, primero debes registrar un usuario y luego 
 }
 ```
 
+### Usuario Administrador
+
+La API implementa un sistema de control de acceso basado en roles. Solo el **usuario administrador** tiene permisos para modificar productos.
+
+#### Creación Automática del Administrador
+
+Al iniciar el servidor (`pnpm run dev` o `pnpm start`), el sistema verifica si existe un usuario con el email configurado en `ADMIN_EMAIL`. Si no existe, lo crea automáticamente usando las credenciales del archivo `.env`:
+
+- ✅ Si es la primera vez: `"✅ Usuario administrador creado: admin@admin.com"`
+- ℹ️ Si ya existe: `"ℹ️ El admin admin@admin.com ya existe. Todo bien!"`
+
+#### Permisos del Administrador
+
+Solo el usuario con el email configurado en `ADMIN_EMAIL` puede:
+
+- ✅ Crear productos nuevos
+- ✅ Actualizar productos existentes
+- ✅ Eliminar productos
+
+Los usuarios normales pueden:
+
+- ✅ Ver todos los productos (GET)
+- ✅ Gestionar su propia lista de productos favoritos
+- ❌ **NO** pueden crear, editar o eliminar productos del catálogo principal
+
+#### Ejemplo de login como Admin
+
+```json
+POST /api/auth/login
+{
+  "email": "admin@admin.com",
+  "password": "your_admin_password"
+}
+```
+
+> **Importante:** Asegúrate de usar el mismo email y contraseña configurados en las variables de entorno `ADMIN_EMAIL` y `ADMIN_PASSWORD`.
+
+#### Códigos de respuesta de autorización
+
+- **200 OK** - Usuario autenticado correctamente (normal o admin)
+- **401 Unauthorized** - Token no proporcionado o inválido
+- **403 Forbidden** - Usuario válido pero sin permisos de administrador
+
+### Tabla de Permisos
+
+| Endpoint                        | Usuario Normal   | Administrador | Requiere Auth |
+| ------------------------------- | ---------------- | ------------- | ------------- |
+| `GET /api/products`             | ✅ Permitido     | ✅ Permitido  | No            |
+| `GET /api/products/search`      | ✅ Permitido     | ✅ Permitido  | No            |
+| `GET /api/products/:id`         | ✅ Permitido     | ✅ Permitido  | No            |
+| `POST /api/products`            | ❌ 403 Forbidden | ✅ Permitido  | Sí (Admin)    |
+| `PUT /api/products/:id`         | ❌ 403 Forbidden | ✅ Permitido  | Sí (Admin)    |
+| `PATCH /api/products/:id`       | ❌ 403 Forbidden | ✅ Permitido  | Sí (Admin)    |
+| `DELETE /api/products/:id`      | ❌ 403 Forbidden | ✅ Permitido  | Sí (Admin)    |
+| `GET /api/user/products`        | ✅ Permitido     | ✅ Permitido  | Sí            |
+| `POST /api/user/products`       | ✅ Permitido     | ✅ Permitido  | Sí            |
+| `DELETE /api/user/products/:id` | ✅ Permitido     | ✅ Permitido  | Sí            |
+
 ### Rutas Protegidas
 
-Las siguientes rutas requieren un token JWT en la cabecera `Authorization` como `Bearer token`.
+Las siguientes rutas requieren un token JWT en la cabecera `Authorization` como `Bearer token` **y permisos de administrador** (`admin@admin.com`):
 
-- `POST /api/products`
-- `PUT /api/products/:id`
-- `PATCH /api/products/:id`
-- `DELETE /api/products/:id`
+- `POST /api/products` - Solo admin
+- `PUT /api/products/:id` - Solo admin
+- `PATCH /api/products/:id` - Solo admin
+- `DELETE /api/products/:id` - Solo admin
 
 ### Productos
 
@@ -243,7 +317,8 @@ Las siguientes rutas requieren un token JWT en la cabecera `Authorization` como 
 #### Crear un producto
 
 - **POST** `/api/products`
-- **Descripción:** Crea un producto nuevo. (Ruta protegida)
+- **Descripción:** Crea un producto nuevo. ⚠️ **Solo administradores** (Ruta protegida)
+- **Requiere:** Token JWT de usuario administrador (`admin@admin.com`)
 - **Body (JSON):**
 
 ```json
@@ -259,7 +334,8 @@ Las siguientes rutas requieren un token JWT en la cabecera `Authorization` como 
 #### Actualizar un producto
 
 - **PUT** `/api/products/:id`
-- **Descripción:** Actualiza todos los campos de un producto. (Ruta protegida)
+- **Descripción:** Actualiza todos los campos de un producto. ⚠️ **Solo administradores** (Ruta protegida)
+- **Requiere:** Token JWT de usuario administrador (`admin@admin.com`)
 - **Parámetros:**
   - `id` (path, requerido): ID del producto a actualizar.
 - **Body (JSON):**
@@ -277,7 +353,8 @@ Las siguientes rutas requieren un token JWT en la cabecera `Authorization` como 
 #### Actualizar un producto parcialmente
 
 - **PATCH** `/api/products/:id`
-- **Descripción:** Actualiza solo los campos proporcionados de un producto. (Ruta protegida)
+- **Descripción:** Actualiza solo los campos proporcionados de un producto. ⚠️ **Solo administradores** (Ruta protegida)
+- **Requiere:** Token JWT de usuario administrador (`admin@admin.com`)
 - **Parámetros:**
   - `id` (path, requerido): ID del producto a actualizar.
 - **Body (JSON):** Solo incluir los campos que quieres actualizar
@@ -292,7 +369,8 @@ Las siguientes rutas requieren un token JWT en la cabecera `Authorization` como 
 #### Eliminar un producto
 
 - **DELETE** `/api/products/:id`
-- **Descripción:** Elimina un producto por su ID. (Ruta protegida)
+- **Descripción:** Elimina un producto por su ID. ⚠️ **Solo administradores** (Ruta protegida)
+- **Requiere:** Token JWT de usuario administrador (`admin@admin.com`)
 - **Parámetros:**
   - `id` (path, requerido): ID del producto a eliminar
 - **Respuesta:** 204 No Content

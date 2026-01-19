@@ -40,6 +40,41 @@ POST http://localhost:3000/api/auth/login HTTP/1.1
 Content-Type: application/json
 
 {
-  "email": "test8@test.com",
-  "password": "12Li3S69*"
+  "email": "admin@admin.com",
+  "password": "123456"
+}
+
+
+### DELETE PRODUCT
+
+DELETE http://localhost:3000/api/products/0nVLBxNpaT2l6OkneKpB HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InpZVGFkeko0cHNtVkdyVmZoNDNpIiwiZW1haWwiOiJhZG1pbkBhZG1pbi5jb20iLCJpYXQiOjE3Njg3ODY0NTksImV4cCI6MTc2ODc5MDA1OX0.WVfUJZrMgbwi5OgDxecn5Nl4lObgYJaL9ea6BDzDnug
+
+
+### POST PRODUCT
+
+POST http://localhost:3000/api/products HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6InpZVGFkeko0cHNtVkdyVmZoNDNpIiwiZW1haWwiOiJhZG1pbkBhZG1pbi5jb20iLCJpYXQiOjE3Njg3ODY0NTksImV4cCI6MTc2ODc5MDA1OX0.WVfUJZrMgbwi5OgDxecn5Nl4lObgYJaL9ea6BDzDnug
+Content-Type: application/json
+
+{
+  "categories": [
+    "Mujer",
+    "Ropa"
+  ],
+  "description": "TELA: TRICOT MODALNO TIENE TAZATIENE SPANDEXTALLA: M (USO DE 36 A 42)BUSTO: M (USO DE 40 A 46) Notas: Los accesorios utilizados, zapatos, b",
+  "image": "https://i.pinimg.com/474x/e2/73/ef/e273ef742874763a52caef1b45368b39.jpg",
+  "name": "Blusa Cacharrel Tricot Botones Metálicos - Blusas - Ropa | ONLAURI",
+  "price": 5.99
+}
+
+
+### PUT PRODUCT
+
+PATCH http://localhost:3000/api/products/FX43ewdFraSVIwSNRbVi HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IkFhU1lFWUlqTXl3dEZwaXZPellVIiwiZW1haWwiOiJhZG1pbkBhZG1pbi5jb20iLCJpYXQiOjE3Njg3OTY4MjEsImV4cCI6MTc2ODgwMDQyMX0.lzHvO1xsmLevZmr6uCTBUr90PnMdXbdgg1OaD8lKzRk
+Content-Type: application/json
+
+{
+  "price": "4.99"
 }
