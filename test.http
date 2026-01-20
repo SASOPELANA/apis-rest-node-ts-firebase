@@ -10,7 +10,7 @@ GET http://localhost:3000/api/products HTTP/1.1
 
 ### GET product id
 
-GET http://localhost:3000/api/products/72FmFrndHDLkKjszhIO2 HTTP/1.1 HTTP/1.1
+GET http://localhost:3000/api/products/x67AnAF3QWjBCAPWdKRT HTTP/1.1 HTTP/1.1
 
 
 ### GET query name
