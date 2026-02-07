@@ -28,7 +28,12 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 app.use(morgan("dev"));
-app.use(cors());
+app.use(cors(
+  {
+    origin: 'https://proyecto-final-react-tienda.vercel.app', // frontend permitido
+    credentials: true,
+  }
+));
 app.use(express.json());
 
 // swagger --> solo en desarrollo
